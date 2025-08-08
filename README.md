@@ -21,17 +21,14 @@
 - Docker Compose 2.0+
 
 ```bash
-# 1. Клонирование и вход в папку
+# 1. Скачать проект
 git clone https://github.com/Vikkkaaa123/docker.git && cd docker
 
-# 2. Подготовка файловой системы
-sudo mkdir -p pgdata && sudo chown -R 1000:1000 pgdata/
+# 2. Дать права на папку с БД
+sudo chown -R 1000:1000 pgdata/
 
-# 3. Запуск системы
-docker-compose up -d --force-recreate --build
-
-# 4. Проверка статуса (все сервисы должны быть 'Up')
-docker-compose ps -a
+# 3. Запустить
+docker-compose up -d --build
 ```
 
 ### 🌐 Доступ к сервисам (endpoint)
