@@ -20,21 +20,18 @@
 - Docker 20.10+
 - Docker Compose 2.0+
 
-### Инструкция
-1. Клонировать репозиторий
 ```bash
-git clone https://github.com/Vikkkaaa123/docker.git
-cd docker
-```
+# 1. Клонирование и вход в папку
+git clone https://github.com/Vikkkaaa123/docker.git && cd docker
 
-2. Запустить сервисы
-```bash
-docker-compose up -d --build
-```
+# 2. Подготовка файловой системы
+sudo mkdir -p pgdata && sudo chown -R 1000:1000 pgdata/
 
-3. Проверить статус
-```bash
-docker-compose ps
+# 3. Запуск системы
+docker-compose up -d --force-recreate --build
+
+# 4. Проверка статуса (все сервисы должны быть 'Up')
+docker-compose ps -a
 ```
 
 ### 🌐 Доступ к сервисам (endpoint)
