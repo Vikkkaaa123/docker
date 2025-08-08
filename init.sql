@@ -1,14 +1,14 @@
-CREATE TABLE boxers(
-    rating int,
-    first_name varchar(20),
-    last_name varchar(30),
-    nickName varchar(20)
+CREATE TABLE students (
+    id serial PRIMARY KEY,
+    first_name varchar(50),
+    last_name varchar(50),
+    age int,
+    university varchar(100)
 );
 
-INSERT INTO boxers (rating, first_name, last_name, nickName) 
+INSERT INTO students (first_name, last_name, age, university) 
 VALUES 
-(1, 'Genadiy', 'Golovkin', 'GGG'),
-(2, 'Денис', 'Лебедев', 'The Hunter'),
-(3, 'Александр', 'Поветкин', 'Russian Vityaz'),
-(4, 'Сергей','Ковалев', 'Krusher'),
-(5, 'Василий', 'Ломаченко', 'The Matrix');
+('Иван', 'Иванов', 20, 'МГУ'),
+('Петр', 'Петров', 21, 'СПбГУ'),
+('Анна', 'Сидорова', 19, 'НГУ'),
+('Мария', 'Кузнецова', 22, 'МФТИ');
