@@ -5,16 +5,26 @@ services:
     volumes:
       - ./front/:/usr/local/apache2/htdocs
 
+ services:
   postgres:
-    image: postgres:latest
+    image: postgres:15-alpine  # Используем стабильную версию вместо latest
+    restart: unless-stopped    # Автоматический перезапуск при падении
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
       POSTGRES_DB: postgres_db
       PGDATA: /var/lib/postgresql/data/pg_data
+      POSTGRES_INITDB_ARGS: "--no-sync"  # Ускоряет инициализацию
     volumes:
       - ./pgdata:/var/lib/postgresql/data/pg_data
       - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./pg_logical:/var/lib/postgresql/data/pg_logical  # Фикс для snapshots
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+      
 
   python_app:
     image: python
