@@ -20,15 +20,20 @@
 - Docker 20.10+
 - Docker Compose 2.0+
 
+1. Клонировать репозиторий
 ```bash
-# 1. Скачать проект
-git clone https://github.com/Vikkkaaa123/docker.git && cd docker
+git clone https://github.com/Vikkkaaa123/docker.git
+cd docker
+```
 
-# 2. Дать права на папку с БД
-sudo chown -R 1000:1000 pgdata/
-
-# 3. Запустить
+2. Запустить сервисы
+```bash
 docker-compose up -d --build
+```
+
+3. Проверить статус
+```bash
+docker-compose ps
 ```
 
 ### 🌐 Доступ к сервисам (endpoint)
