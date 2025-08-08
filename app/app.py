@@ -13,20 +13,19 @@ def get_db_connection():
     )
     return conn
 
-@app.route('/boxers', methods=['GET'])
-def get_boxers():
+@app.route('/students', methods=['GET'])
+def get_students():
     conn = get_db_connection()
     cur = conn.cursor()
-    cur.execute('SELECT * FROM boxers;')
-    boxers = cur.fetchall()
+    cur.execute('SELECT * FROM students;')
+    students = cur.fetchall()
     cur.close()
     conn.close()
-    
-    return jsonify(boxers)
+    return jsonify(students)
 
 @app.route('/flask', methods=['GET'])
 def flask_endpoint():
-    return "Вечер в хату, Алексей Сергеевич!"
+    return "Сервер успешно запущен 🚀", 200
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
